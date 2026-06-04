@@ -370,105 +370,20 @@ Acceptance criteria:
 
 security PASS (findings=0)
 
-## qa — qa @ 2026-06-04T16:08:42.138254Z
+## qa — qa @ 2026-06-04T17:56:22.137320Z
 
-**FULL TEST PLAN**
 
 PASS: The task is to add a 3-step quickstart guide to the README, which is a straightforward file update. Below is the TDD test plan.
 
-### 1. **Acceptance criteria** (measurable)
+1.  **Acceptance criteria** (measurable):
+    *   The `README.md` file at `/opt/axentx/agent-shield/README.md` includes a "Getting Started" section with a 3-step quickstart guide.
+    *   The guide uses numbered lists (1., 2., 3.) and markdown formatting (e.g., code blocks for commands).
+    *   Step 1 explicitly describes installing project dependencies (`pip install -r requirements.txt`).
+    *   Step 2 provides the exact command to run the sample agent (`python examples/quickstart_agent.py`).
+    *   Step 3 describes how to verify the agent's output (e.g., checking tool calls and timing).
+    *   The guide is positioned near the top of the README, before any other sections.
+    *   The guide correctly references the sample agent file path (`examples/quickstart_agent.py`).
 
-*   The `README.md` file at `/opt/axentx/agent-shield/README.md` includes a "Getting Started" section with a 3-step quickstart guide.
-*   The guide uses numbered lists (1., 2., 3.) and markdown formatting (e.g., code blocks for commands).
-*   Step 1 explicitly describes installing project dependencies (`pip install -r requirements.txt`).
-*   Step 2 provides the exact command to run the sample agent (`python examples/quickstart_agent.py`).
-*   Step 3 describes how to verify the agent's output (e.g., checking tool calls and timing).
-*   The guide is positioned near the top of the README, before any other sections.
-*   The guide correctly references the sample agent file path (`examples/quickstart_agent.py`).
-
-### 2. **Unit tests** (pseudo-code, using Python/pytest style)
-
-```python
-import os
-import pytest
-from pathlib import Path
-
-def test_readme_file_exists():
-    readme_path = Path("/opt/axentx/agent-shield/README.md")
-    assert readme_path.exists()
-
-def test_readme_contents():
-    readme_path = Path("/opt/axentx/agent-shield/README.md")
-    with open(readme_path, "r") as f:
-        contents = f.read()
-        assert "Getting Started" in contents
-        assert "1. Install project dependencies" in contents
-        assert "2. Run the sample agent" in contents
-        assert "3. Verify the agent's output" in contents
-
-def test_readme_markdown_formatting():
-    readme_path = Path("/opt/axentx/agent-shield/README.md")
-    with open(readme_path, "r") as f:
-        contents = f.read()
-        assert "```" in contents  # code block for command
-        assert "1." in contents  # numbered list
-        assert "2." in contents  # numbered list
-        assert "3." in contents  # numbered list
-```
-
-### 3. **Integration tests** (happy cases and edge cases)
-
-```python
-import os
-import pytest
-from pathlib import Path
-
-def test_quickstart_guide_runs():
-    # Run the sample agent
-    os.system("python examples/quickstart_agent.py")
-    # Verify the agent's output
-    assert True  # placeholder for actual verification logic
-
-def test_quickstart_guide_installs_dependencies():
-    # Install project dependencies
-    os.system("pip install -r requirements.txt")
-    # Verify the dependencies are installed
-    assert True  # placeholder for actual verification logic
-
-def test_quickstart_guide_references_sample_agent():
-    # Check if the guide references the sample agent file path
-    readme_path = Path("/opt/axentx/agent-shield/README.md")
-    with open(readme_path, "r") as f:
-        contents = f.read()
-        assert "examples/quickstart_agent.py" in contents
-
-def test_quickstart_guide_edge_case_missing_dependencies():
-    # Remove project dependencies
-    os.system("pip uninstall -y -r requirements.txt")
-    # Try to run the sample agent
-    try:
-        os.system("python examples/quickstart_agent.py")
-        assert False  # should raise an error
-    except Exception as e:
-        assert True  # verify the error message
-
-def test_quickstart_guide_edge_case_invalid_command():
-    # Modify the command in the guide to an invalid one
-    readme_path = Path("/opt/axentx/agent-shield/README.md")
-    with open(readme_path, "r") as f:
-        contents = f.read()
-        contents = contents.replace("python examples/quickstart_agent.py", "invalid_command")
-        with open(readme_path, "w") as f:
-            f.write(contents)
-    # Try to run the sample agent
-    try:
-        os.system("python examples/quickstart_agent.py")
-        assert False  # should raise an error
-    except Exception as e:
-        assert True  # verify the error message
-```
-
-### 4. **Risk register** (what could go wrong, how to detect)
-
-*   **Risk 1:** The quickstart guide is not properly formatted, causing errors when running the sample agent.
-    *   **Detection:** Run the sample age
+2.  **Unit tests** (pseudo-code, using Python/pytest style):
+    ```python
+    def test_readme_file_exists
