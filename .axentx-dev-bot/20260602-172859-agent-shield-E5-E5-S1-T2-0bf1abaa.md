@@ -393,7 +393,7 @@ Acceptance criteria: ship as 'good enough first pass'; open follow-up issue for 
 
 RETRY (1/8): LLM failed: all LLM providers failed; last=hf-final: HTTP Error 402: Payment Required (after local-llm: local-llm: none tried (after Codespace-fleet: all codespace endpoints down: no endpoint tried (after HF-Inference: HTTP 402 (after OVH-Mistral-Small-24B/Mistral-Small-3.2-24B-Instruct-2506: HTTP 429)))); cooldowns: ['Cerebras-GPT', 'DeepSeek', 'DeepSeek-R1', 'DeepSeek-V3', 'G4F-Gemini-2.5-Flash', 'G4F-Gemini-2.5-Pro', 'G4F-Groq-Llama-3.3-70B', 'G4F-Ollama-DeepSeek-V4-Pro', 'G4F-Ollama-Devstral-2-123B', 'G4F-Ollama-GLM-5.1', 'G4F-Ollama-GPT-OSS-120B', 'G4F-Ollama-Gemma3-12B', 'G4F-Ollama-Gemma3-4B', 'G4F-Ollama-Kimi-K2.6', 'G4F-Ollama-MiniMax-M2.5', 'G4F-Ollama-Nemotron-3-Super', 'G4F-Ollama-Qwen3-Next-80B', 'G4F-Perplexity-Turbo', 'GitHub-Models-7', 'GitHub-Models-9', 'HF-Router-Qwen3-235B', 'LLM7-GPT-4o-Mini', 'OVH-Mistral-Small-24B', 'Together', 'Together-Llama3.3-70B-Free', 'Together-Qwen', 'Together-Qwen2.5-72B', 'Voids-GPT-5']
 
-## qa — qa @ 2026-06-03T21:12:40.880097Z
+## qa — qa @ 2026-06-04T12:51:56.905353Z
 
 PASS: All sections included and formatted correctly.
 
