@@ -370,7 +370,7 @@ Acceptance criteria:
 
 security PASS (findings=0)
 
-## qa — qa @ 2026-06-04T17:56:22.137320Z
+## qa — qa @ 2026-06-04T19:12:07.895376Z
 
 
 PASS: The task is to add a 3-step quickstart guide to the README, which is a straightforward file update. Below is the TDD test plan.
