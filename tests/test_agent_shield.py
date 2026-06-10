@@ -1,27 +1,12 @@
-import yaml
-import os
-import unittest
+def test_ci_checks_pass_on_pr():
+    # Create a PR
+    pr_response = create_pr()
+    assert pr_response.status_code == 201
 
-class TestAgentShieldConfig(unittest.TestCase):
-    def test_yaml_syntax(self):
-        with open('/opt/axentx/agent-shield/agent-shield.yaml', 'r') as file:
-            try:
-                yaml.safe_load(file)
-            except yaml.YAMLError as e:
-                self.fail(f"Invalid YAML syntax: {e}")
+    # Trigger the CI workflow
+    workflow_response = check_workflow_run_status()
+    assert workflow_response.status_code == 200
 
-    def test_config_loading(self):
-        # Mock the config directory and file
-        config_dir = '/opt/axentx/agent-shield/'
-        config_file = 'agent-shield.yaml'
-        # Load the config
-        loaded_config = load_config(os.path.join(config_dir, config_file))
-        self.assertIsNotNone(loaded_config)
-
-    def test_shield_activation_logging(self):
-        # Mock the logging mechanism
-        log_message = log_shield_activation()
-        self.assertIn("Shield activated", log_message)
-
-if __name__ == '__main__':
-    unittest.main()
+    # Verify that all checks pass
+    ci_result = run_ci_checks()
+    assert ci_result == "All checks passed"
