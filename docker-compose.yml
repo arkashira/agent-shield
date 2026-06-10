@@ -1,15 +1,12 @@
-def test_log_format():
-    log_entry = create_log_entry(agent_id="123", tool_name="example_tool", input="some_input", output="some_output", status="success")
-    assert isinstance(log_entry, dict)
-    assert "agent_id" in log_entry
-    assert "tool_name" in log_entry
-    assert "input" in log_entry
-    assert "output" in log_entry
-    assert "timestamp" in log_entry
-    assert "status" in log_entry
-    assert log_entry["input"] == truncate("some_input", 1024)
-    assert log_entry["output"] == truncate("some_output", 1024)
+def test_docker_compose_up():
+    result = subprocess.run(['docker-compose', 'up', '-d'], capture_output=True, text=True)
+    assert result.returncode == 0, "Docker Compose failed to start the application"
 
-def test_redaction_of_sensitive_fields():
-    log_entry = create_log_entry(agent_id="123", tool_name="example_tool", input="API_KEY=secret123", output="result", status="success")
-    assert "API_KEY" not in log_entry["input"]
+def test_default_configuration():
+    with open('/opt/axentx/agent-shield/.env.example') as f:
+        content = f.read()
+    assert 'DEFAULT_SETTING=value' in content, "Default settings are not present in the .env.example file"
+
+def test_health_check():
+    response = requests.get('http://localhost:YOUR_PORT/health')
+    assert response.status_code == 200, "Health check did not return 200 OK"
