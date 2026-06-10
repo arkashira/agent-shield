@@ -1,0 +1,18 @@
+{
+  "dashboard": {
+    "title": "Agent Shield Metrics",
+    "panels": [
+      {
+        "title": "Tool Call Latency",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "tool_call_latency_seconds",
+            "legendFormat": "{{instance}}"
+          }
+        ]
+      },
+      // Additional panels for other metrics...
+    ]
+  }
+}
